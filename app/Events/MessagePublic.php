@@ -7,25 +7,20 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MessagePrivate implements ShouldBroadcast
+class MessagePublic implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public $idDestiny;
-    public $idOrigin;
-    public $message;
-    public function __construct(int $idDestiny, string $message, int $idOrigin )
+    public $messageAll;
+    public function __construct(string $messageAll)
     {
-        $this->idDestiny = $idDestiny;
-        $this->message = $message;
-        $this->idOrigin = $idOrigin;
+        $this->messageAll = $messageAll;
     }
 
     /**
@@ -36,9 +31,7 @@ class MessagePrivate implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('App.Models.User.'.$this->idDestiny),
-             new PrivateChannel('App.Models.User.'.$this->idOrigin),
+            new Channel('allPublic'),
         ];
-        
     }
 }

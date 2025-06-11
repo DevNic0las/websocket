@@ -10,10 +10,20 @@ import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: '/dashboard',
+        title: 'Chat',
+        href: '/chat',
         icon: LayoutGrid,
     },
+    {
+        title: 'Amigos',
+        href: '#',
+        icon: LayoutGrid
+    },
+    {
+        title: 'Adicionar amigos',
+        href: '/friend'
+    }
+
 ];
 
 const footerNavItems: NavItem[] = [
@@ -36,7 +46,7 @@ const footerNavItems: NavItem[] = [
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="route('dashboard')">
+                        <Link :href="route('message.all')">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>

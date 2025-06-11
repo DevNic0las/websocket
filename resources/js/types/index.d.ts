@@ -24,6 +24,7 @@ export interface SharedData extends PageProps {
     auth: Auth;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
+    othersUsers: othersUsers[]
 }
 
 export interface User {
@@ -34,6 +35,10 @@ export interface User {
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
+}
+export interface othersUsers{
+id:number,
+name:string
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;

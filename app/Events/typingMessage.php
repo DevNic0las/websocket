@@ -7,25 +7,22 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MessagePrivate implements ShouldBroadcast
+class typingMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public $idDestiny;
-    public $idOrigin;
-    public $message;
-    public function __construct(int $idDestiny, string $message, int $idOrigin )
+    public string $typing;
+    public int $toId;
+    public function __construct(string $typing, int $toId)
     {
-        $this->idDestiny = $idDestiny;
-        $this->message = $message;
-        $this->idOrigin = $idOrigin;
+        $this->typing = $typing;
+        $this->toId = $toId;
     }
 
     /**
@@ -36,9 +33,17 @@ class MessagePrivate implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('App.Models.User.'.$this->idDestiny),
-             new PrivateChannel('App.Models.User.'.$this->idOrigin),
+            new PrivateChannel('App.Models.User.' . $this->toId),
         ];
-        
+    }
+    public function broadcastAs(): string
+    {
+        return "typing-message";
+    }
+    public function broadcastWith(): array
+    {
+        return [
+            'typing'=>$this->typing,
+        ];
     }
 }
