@@ -9,19 +9,19 @@ import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Chat',
-        href: '/chat',
-        icon: LayoutGrid,
-    },
+
     {
         title: 'Amigos',
-        href: '#',
+        href: '/chat',
         icon: LayoutGrid
     },
     {
         title: 'Adicionar amigos',
         href: '/friend'
+    },
+    {
+        title: 'Notificações',
+        href: '/notify'
     }
 
 ];

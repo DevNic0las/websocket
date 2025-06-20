@@ -5,7 +5,8 @@ namespace App\Providers;
 use App\Events\testeLog;
 use App\Listeners\Logteste;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 class AppServiceProvider extends ServiceProvider
 {
         protected $listen = [
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+       Gate::define("change-state", function(User $user, $id){
+        return $user->id===$id;
+       });
     }
 }

@@ -26,9 +26,10 @@ import type { SharedData } from '@/types/index';
 import { usePage } from '@inertiajs/vue3';
 import { ref } from 'vue';
 const page = usePage<SharedData>();
+const friendsThisUser = page.props.friendsThisUser;
 const listFriends = ref();
 const {user} = page.props.auth
-listFriends.value = page.props.othersUsers;
+listFriends.value = friendsThisUser;
 console.log(listFriends.value);
 
 </script>
