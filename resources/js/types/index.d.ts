@@ -29,6 +29,7 @@ export interface SharedData extends PageProps {
     sentFriendRequests: user[];
     friendsThisUser: user[];
     notify: notify[];
+    groups:groups[];
 }
 
 export interface User {
@@ -47,5 +48,13 @@ name:string
 export interface notify{
     data: string,
     
+}
+
+export interface groups{
+    id:number
+    group_name:string,
+    tags:string,
+    description:string,
+    amount_people:number,
 }
 export type BreadcrumbItemType = BreadcrumbItem;

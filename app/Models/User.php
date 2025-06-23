@@ -65,4 +65,7 @@ class User extends Authenticatable
             ->wherePivot('status', 'pending')
             ->withTimestamps();
     }
+    public function groups():BelongsToMany{
+        return $this->belongsToMany(Group::class, "groups_user","user_id", "group_id");
+    }
 }

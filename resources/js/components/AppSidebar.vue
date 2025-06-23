@@ -22,6 +22,10 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Notificações',
         href: '/notify'
+    },
+    {
+        title: 'Grupos',
+        href: '/group'
     }
 
 ];

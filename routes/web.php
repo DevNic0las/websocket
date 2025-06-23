@@ -3,10 +3,12 @@
 use App\Events\MessagePublic;
 use App\Events\testeLog;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\InviteController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotifiyController;
 use App\Http\Controllers\UserController;
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +29,7 @@ Route::get("/teste", function () {
   echo $evento;
 });
 Route::middleware(['auth', 'verified'])->group(function () {
-  //gets
+
   Route::get('/chat', [UserController::class, 'index'])->name('message.all');
 
 
@@ -55,6 +57,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
   Route::post('/typing', [MessageController::class, "typing"])->name('message.typing');
 
   Route::get('/notify', [NotifiyController::class, 'index'])->name('notify.all');
+
+  Route::get('/group', [GroupController::class, "index"])->name("group.index");
+
+  Route::post('/group', [GroupController::class, "store"])->name("group.store");
+
+  
 
 });
 Route::get('/teste', function (Request $request) {
