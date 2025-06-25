@@ -20,6 +20,7 @@ class Group extends Model
         static::creating(function ($group){
             $group->uuid = Str::uuid();
             $group->user_id = Auth::id();
+            
         });
     }
     public function users() :BelongsToMany{

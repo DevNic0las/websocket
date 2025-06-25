@@ -26,6 +26,10 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Grupos',
         href: '/group'
+    },
+    {
+        title: 'Seus grupos',
+        href: '/my-groups'
     }
 
 ];

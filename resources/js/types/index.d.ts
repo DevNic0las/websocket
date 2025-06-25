@@ -56,5 +56,6 @@ export interface groups{
     tags:string,
     description:string,
     amount_people:number,
+    uuid: string
 }
 export type BreadcrumbItemType = BreadcrumbItem;

@@ -62,7 +62,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
   Route::post('/group', [GroupController::class, "store"])->name("group.store");
 
+  Route::post('/group/{uuid}', [GroupController::class, 'attachUserinGroup'])->name("group.attach");
+
+  Route::get('/my-groups', [GroupController::class, 'showYourGroup'])->name("group.show");
   
+  Route::get('/group/{uuid}', [GroupController::class, 'chatGroup'])->name("group.message");
 
 });
 Route::get('/teste', function (Request $request) {
